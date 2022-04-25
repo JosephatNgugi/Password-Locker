@@ -31,11 +31,21 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_user.password, "123456")
 
     def test_save_user(self):
-        '''
+        """
         test_save_user test case to test if a user is saved into the user_list
-        '''
-        self.new_user.save_user() # saving the new user
-        self.assertEqual(len(User.user_list),1)
+        """
+        self.new_user.save_user()  # saving the new user
+        self.assertEqual(len(User.user_list), 1)
+
+    def test_save_multiple_user(self):
+        """
+        test to check if we can save multiple save multiple users to our user list
+        """
+        self.new_user.save_user()
+        test_user = User("TestUser", "78910")
+        test_user.save_user()
+        self.assertEqual(len(User.user_list), 2)
+
 
 if __name__ == "__main__":
     unittest.main()
