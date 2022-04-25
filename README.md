@@ -14,8 +14,8 @@ An python terminal application for saving user accounts and passwords.
 ### Running the Application
 - Clone the application to your machine and run it using an editor of your choice.
 - While on the project folder run this commands on the terminal;
-$ chmod +x Password-Locker.py  # To make the program executable.
-$ Applock.py # To run the program
+$ chmod +x PassLocker.py  # To make the program executable.
+$ PassLocker.py # To run the program
 -----
 ## BDD
 <ol>
