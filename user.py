@@ -18,3 +18,19 @@ class User:
         method that saves user objects into user_list
         """
         User.user_list.append(self)
+
+    @classmethod
+    def user_exist(cls, username):
+        """
+        Method to check if a user exists from the user list.
+        Args:
+            username: to search if a user exists
+        Returns :
+            Boolean : True or false depending if the user exists
+        """
+        for user in cls.user_list:
+            if user.user_name == username:
+                return True
+        return False
+
+    
