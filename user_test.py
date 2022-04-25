@@ -4,7 +4,7 @@ from user import User  # Import our User class
 
 class TestUser(unittest.TestCase):
     """
-    Test class that define test cases for the user class behaviors,
+    Test class that define test cases for the user class behaviors.
 
     Args:
         unittest.TestCase: TestCase class that aid in creating test cases.
@@ -27,7 +27,7 @@ class TestUser(unittest.TestCase):
         test_case to test if our object is initialized properly.
         """
 
-        self.assertEqual(self.new_user.username, "Joe")
+        self.assertEqual(self.new_user.user_name, "Joe")
         self.assertEqual(self.new_user.password, "123456")
 
     def test_save_user(self):
@@ -36,3 +36,6 @@ class TestUser(unittest.TestCase):
         '''
         self.new_user.save_user() # saving the new user
         self.assertEqual(len(User.user_list),1)
+
+if __name__ == "__main__":
+    unittest.main()
