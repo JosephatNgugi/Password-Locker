@@ -19,6 +19,12 @@ class User:
         """
         User.user_list.append(self)
 
+    def delete_user(self):
+        """
+        method to delete a saved user from the user_list
+        """
+        User.user_list.remove(self)
+
     @classmethod
     def user_exist(cls, username):
         """
