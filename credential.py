@@ -22,3 +22,11 @@ class UserCredential:
         method to save user credential into our credentials array
         """
         UserCredential.credentials.append(self)
+
+    def delete_credential(self):
+        """
+        method to delete user credential from the credentials array
+        """
+        UserCredential.credentials.remove(self)
+
+    

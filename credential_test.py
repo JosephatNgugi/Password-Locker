@@ -49,6 +49,16 @@ class TestCredential(unittest.TestCase):
         test_instaCredential.save_credential()
         self.assertEqual(len(UserCredential.credentials), 3)
 
+    def test_delete_credential(self):
+        """
+        test if we can remove a user credential from our credentials array.
+        """
+        self.new_credential.save_credential()
+        test_instaCredential = UserCredential("instagram", "insta@now.com", "checkit")
+        test_instaCredential.save_credential()
+        self.new_credential.delete_credential()  # Deleting a contact object
+        self.assertEqual(len(UserCredential.credentials), 1)
+
 
 if __name__ == "__main__":
     unittest.main()
