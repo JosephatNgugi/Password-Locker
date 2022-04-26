@@ -1,6 +1,4 @@
-import unittest
-
-from httplib2 import Credentials  # unittest module
+import unittest  # unittest module
 from credential import UserCredential  # Importing the user class
 
 
@@ -32,5 +30,14 @@ class TestCredential(unittest.TestCase):
         self.assertEqual(self.new_credential.type, "facebook")
         self.assertEqual(self.new_credential.username, "name@acc.com")
         self.assertEqual(self.new_credential.password, "2580")
-
     
+    def test_save_credential(self):
+        '''
+        Test if a user credential object is saved to the credentials
+        '''
+        self.new_credential.save_credential()
+        self.assertEqual(len(UserCredential.credentials), 1)
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -16,3 +16,9 @@ class UserCredential:
         self.type = type
         self.username = username
         self.password = password
+
+    def save_credential(self):
+        """
+        method to save user credential into our credentials array
+        """
+        UserCredential.credentials.append(self)
