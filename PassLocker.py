@@ -128,10 +128,40 @@ def main():
                 passcode = confirmed_passcode
 
             else:
-                save_user(
-                    create_user(userName, passcode)
+                save_user(create_user(userName, passcode))
+                print(
+                    f"Account creation for {userName} successful. \n Proceed to login. \n"
                 )
-                print(f"Account creation for {userName} successful. \n Proceed to login. \n")
+
+                print("Enter Username")
+                entered_username = input()
+                print("Enter password")
+                entered_password = input()
+
+            while entered_username != userName or entered_password != passcode:
+                print("Invalid username or password! Try again")
+                print("Your Username")
+                entered_username = input()
+                print("Your password")
+                entered_password = input()
+            else:
+                print(f"Hello {userName}, You're now logged in. \n")
+                print("You can now securely save your credentials with Password Locker")
+#Check back later for more functionality
+        elif short_code == "lg":
+            print("Welcome, Enter your account Username.")
+
+            userName = input()
+            if check_existing_user(userName):
+                print("Enter password")
+                entered_passcode = input()
+                # while entered_passcode = 
+            else:
+                print("Sorry! No account with that username was found.")
+                
+
+            
+
 
 
 if __name__ == "__main__":
