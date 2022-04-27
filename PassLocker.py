@@ -125,29 +125,31 @@ def main():
                 created_passcode = input()
                 print("Confirm password")
                 confirmed_passcode = input()
+
+            else:
                 passcode = confirmed_passcode
 
-            else:
                 save_user(create_user(userName, passcode))
                 print(
-                    f"Account creation for {userName} successful. \n Proceed to login. \n"
+                    f"Account creation for {userName} was successful. \n Proceed to login. \n"
                 )
 
-                print("Enter Username")
-                entered_username = input()
-                print("Enter password")
-                entered_password = input()
+            #     print("Enter Username")
+            #     entered_username = input()
+            #     print("Enter password")
+            #     entered_password = input()
 
-            while entered_username != userName or entered_password != passcode:
-                print("Invalid username or password! Try again")
-                print("Your Username")
-                entered_username = input()
-                print("Your password")
-                entered_password = input()
-            else:
-                print(f"Hello {userName}, You're now logged in. \n")
-                print("You can now securely save your credentials with Password Locker")
-#Check back later for more functionality
+            # if entered_username != userName or entered_password != passcode:
+            #     print("Invalid username or password! Try again")
+            #     print("Your Username")
+            #     entered_username = input()
+            #     print("Your password")
+            #     entered_password = input()
+            # else:
+            #     print(f"Hello {userName}, You're now logged in. \n")
+            #     print("You can now securely save your credentials with Password Locker")
+
+        # Check back later for more functionality
         elif short_code == "lg":
             print("Welcome, Enter your account Username.")
 
@@ -155,13 +157,47 @@ def main():
             if check_existing_user(userName):
                 print("Enter password")
                 entered_passcode = input()
-                # while entered_passcode = 
+                while entered_passcode != passcode:
+                    print("Wrong Password!! Try again! \n Password")
+                    entered_passcode = input()
+
+                else:
+                    print(f"Hello {userName}, You're now logged in. \n")
+                    print(
+                        "You can now securely save your credentials with Password Locker"
+                    )
+                    print(
+                        "Use these Short Codes:\n -> sc to save your existing credential \n cc to create new credential \n -> fc to search for a credential \n -> dc to display all your saved credentials \n -> cp to copy password \n -> del to delete a credential"
+                    )
+                    print("\n")
+
+                    short_code = input().lower()
+                    print("\n")
+                    if short_code == "sc":
+                        print("Save a user Credential")
+                        print("-" * 10)
+
+                        print("Account Type e.g Facebook")
+                        accType = input()
+
+                        print("Login name")
+                        loginName = input()
+
+                        print("Login Password")
+                        loginPassword = input()
+
+                        save_credential(
+                            create_credential(accType, loginName, loginPassword)
+                        )  # Create and save new credential
+                    elif short_code == "cc":
+                        print("Creating a new user credential")
+                        print("\n")
+
             else:
                 print("Sorry! No account with that username was found.")
-                
 
-            
 
+# accType, loginName, LoginPassword
 
 
 if __name__ == "__main__":
