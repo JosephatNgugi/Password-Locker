@@ -1,5 +1,6 @@
-import unittest  # unittest module
-from credential import UserCredential  # Importing the user class
+import unittest # unittest module
+import pyperclip  
+from credential import UserCredential # Importing the userCredential class
 
 
 class TestCredential(unittest.TestCase):
@@ -59,6 +60,40 @@ class TestCredential(unittest.TestCase):
         self.new_credential.delete_credential()  # Deleting a contact object
         self.assertEqual(len(UserCredential.credentials), 1)
 
+    def test_find_credential(self):
+        """
+        test to check if we find a credential by username
+        """
+        self.new_credential.save_credential()
+        test_twitterCredential = UserCredential("twitter", "0712345678", "security")
+        test_twitterCredential.save_credential()
+        found_credential = UserCredential.find_by_username("0712345678")
+        self.assertEqual(found_credential.password, test_twitterCredential.password)
+
+    def test_display_credentials(self):
+        '''
+        test if all credential list are displayed
+        '''
+        self.assertEqual(UserCredential.display_credentials(), UserCredential.credentials)
+
+    def test_credential_exists(self):
+        """
+        test to check if we can return  Boolean if we cannot find
+        the credential.
+        """
+        self.new_credential.save_credential()
+        test_twitterCredential = UserCredential("twitter", "0712345678", "security")
+        test_twitterCredential.save_credential()
+        credential_exist = UserCredential.credential_exists("0712345678")
+        self.assertTrue(credential_exist)
+
+    def test_copy_password(self):
+        '''
+        test to comfirm we are copying the password from a credential
+        '''
+        self.new_credential.save_credential()
+        UserCredential.copy_password("name@acc.com")
+        self.assertEqual(self.new_credential.password, pyperclip.paste())
 
 if __name__ == "__main__":
     unittest.main()
