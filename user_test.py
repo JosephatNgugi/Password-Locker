@@ -56,6 +56,15 @@ class TestUser(unittest.TestCase):
         self.new_user.delete_user()
         self.assertEqual(len(User.user_list), 1)
 
+    # def test_verify_user(self):
+    #     '''
+	# 	Method to test whether the user verification works to login
+	# 	'''
+    #     self.new_user.save_user()
+    #     user2 = User('test','pswd')
+    #     user2.save_user()
+    #     verified_user = User.verify_user()
+    #     self.assertEqual(verified_user, User.verify_user())
 
 if __name__ == "__main__":
     unittest.main()

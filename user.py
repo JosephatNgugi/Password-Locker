@@ -41,7 +41,19 @@ class User:
 
     @classmethod
     def display_users(cls):
-        '''
+        """
         method that lists available users
-        '''
+        """
         return cls.user_list
+
+    # @classmethod
+    # def verify_user(cls, user_name, password):
+    #     """
+    #         Method that verifies whether the username and
+    #     password entered match with which are in the user_list
+    #     """
+    #     inSession_user = ""
+    #     for user in User.user_list:
+    #         if user.user_name == user_name and user.password == password:
+    #             inSession_user = user.user_name
+    #         return inSession_user
