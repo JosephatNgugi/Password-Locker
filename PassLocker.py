@@ -77,14 +77,62 @@ def display_credentials():
     """
     return UserCredential.display_credentials()
 
+
 def find_credential(username):
     """
     Function that finds a usercredential by login name and returns the credential
     """
     return UserCredential.find_by_username(username)
 
+
 def copy_password():
     """
     Function that copies a user password
     """
     return UserCredential.copy_password()
+
+
+"""Main function starts here"""
+
+
+def main():
+    print(
+        "Welcome to Password Locker, Where you can safely store your accounts and passwords. \n What would you like to do?"
+    )
+    print("\n")
+
+    while True:
+        print(
+            "Use these short codes for navigation: \n -> su to sign up for an account \n -> lg to Login to you account \n -> lo to log out of your account"
+        )
+        short_code = input().lower()
+        print("\n")
+        if short_code == "su":
+            print("Creating New user account")
+            print("-" * 10)
+
+            print("Enter Username")
+            userName = input()
+
+            print("Create Password")
+            created_passcode = input()
+
+            print("Confirm Password")
+            confirmed_passcode = input()
+
+            while confirmed_passcode != created_passcode:
+                print("Invalid Input! Password did not match!! \n Enter password again")
+                created_passcode = input()
+                print("Confirm password")
+                confirmed_passcode = input()
+                passcode = confirmed_passcode
+
+            else:
+                save_user(
+                    create_user(userName, passcode)
+                )
+                print(f"Account creation for {userName} successful. \n Proceed to login. \n")
+
+
+if __name__ == "__main__":
+    main()

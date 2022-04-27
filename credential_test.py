@@ -89,7 +89,7 @@ class TestCredential(unittest.TestCase):
 
     def test_copy_password(self):
         '''
-        test to comfirm we are copying the password from a credential
+        test to confirm we are copying the password from a credential
         '''
         self.new_credential.save_credential()
         UserCredential.copy_password("name@acc.com")
