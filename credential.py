@@ -1,3 +1,6 @@
+import random
+import string
+from httplib2 import Credentials
 import pyperclip
 
 
@@ -31,6 +34,17 @@ class UserCredential:
         method to delete user credential from the credentials array
         """
         UserCredential.credentials.remove(self)
+    
+
+    def password_generator():
+        """
+        Method to generate a Password of the specified length
+        with random alphanumeric values and symbols
+        """
+        line = string.ascii_letters + string.digits + string.punctuation
+        passcode = "".join(random.sample(line,9))
+        return passcode
+        
 
     @classmethod
     def display_credentials(cls):
@@ -76,4 +90,6 @@ class UserCredential:
         '''
         credential_found = UserCredential.find_by_username(username)
         pyperclip.copy(credential_found.password)
+    
+    
 

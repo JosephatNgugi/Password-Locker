@@ -78,6 +78,12 @@ def display_credentials():
     return UserCredential.display_credentials()
 
 
+def password_generate():
+    """
+    Generate a password for the user.
+    """
+    return UserCredential.password_generator()
+
 def find_credential(username):
     """
     Function that finds a usercredential by login name and returns the credential
@@ -90,6 +96,8 @@ def copy_password():
     Function that copies a user password
     """
     return UserCredential.copy_password()
+
+
 
 
 """Main function starts here"""
@@ -200,12 +208,23 @@ def main():
                         loginName = input()
 
                         print("Would You like to auto Generate a password? \n Reply with 'yes' to auto generate a password and 'no' to manually create a password.")
-                        if input().lower == "no":
+                        while input().lower() == "yes":
+                            print("A 9 character password of alpha numerics and symbols will be generated for you.")
+                            loginPassword = password_generate()
+                            print(f"Your generated password is {loginPassword}.\n Your {accType} credential has been created and saved")
+                        else:
+                            input().lower() == "no"
                             print("Create a Password. \n HINT! Use a combination of alpha numerics and symbols for a stronger password.")
-                            loginPassword = input()
+                            loginPassword = input("Your Password: ")
                             save_credential(
                             create_credential(accType, loginName, loginPassword)
                         )  # Create and save new credential
+                            print(f"Your {accType} credentials with username {loginName} has been saved.")
+                        
+                        # else:
+                        #     print("Something went wrong")
+
+                                   
 
             else:
                 print("Sorry! No account with that username was found.")
