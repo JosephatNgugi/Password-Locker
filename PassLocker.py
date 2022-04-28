@@ -121,7 +121,7 @@ def main():
             confirmed_passcode = input()
 
             while confirmed_passcode != created_passcode:
-                print("Invalid Input! Password did not match!! \n Enter password again")
+                print("Oops! Password did not match!! \n Enter password again")
                 created_passcode = input()
                 print("Confirm password")
                 confirmed_passcode = input()
@@ -164,10 +164,10 @@ def main():
                 else:
                     print(f"Hello {userName}, You're now logged in. \n")
                     print(
-                        "You can now securely save your credentials with Password Locker"
+                        "You can now securely save your credentials with Password Locker. \n"
                     )
                     print(
-                        "Use these Short Codes:\n -> sc to save your existing credential \n cc to create new credential \n -> fc to search for a credential \n -> dc to display all your saved credentials \n -> cp to copy password \n -> del to delete a credential"
+                        "Use these Short Codes:\n -> sc to save your existing credential \n -> cc to create new credential \n -> fc to search for a credential \n -> dc to display all your saved credentials \n -> cp to copy password \n -> del to delete a credential"
                     )
                     print("\n")
 
@@ -192,6 +192,20 @@ def main():
                     elif short_code == "cc":
                         print("Creating a new user credential")
                         print("\n")
+
+                        print("Which type of account would you like to create credentials for?")
+                        accType = input()
+
+                        print("Please enter your preffered account username")
+                        loginName = input()
+
+                        print("Would You like to auto Generate a password? \n Reply with 'yes' to auto generate a password and 'no' to manually create a password.")
+                        if input().lower == "no":
+                            print("Create a Password. \n HINT! Use a combination of alpha numerics and symbols for a stronger password.")
+                            loginPassword = input()
+                            save_credential(
+                            create_credential(accType, loginName, loginPassword)
+                        )  # Create and save new credential
 
             else:
                 print("Sorry! No account with that username was found.")
