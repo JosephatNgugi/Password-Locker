@@ -1,6 +1,6 @@
 import random
 import string
-from httplib2 import Credentials
+# from httplib2 import Credentials
 import pyperclip
 
 

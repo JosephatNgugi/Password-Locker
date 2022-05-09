@@ -208,12 +208,13 @@ def main():
                         loginName = input()
 
                         print("Would You like to auto Generate a password? \n Reply with 'yes' to auto generate a password and 'no' to manually create a password.")
-                        while input().lower() == "yes":
+                        if input().lower() == "yes":
                             print("A 9 character password of alpha numerics and symbols will be generated for you.")
                             loginPassword = password_generate()
-                            print(f"Your generated password is {loginPassword}.\n Your {accType} credential has been created and saved")
-                        else:
-                            input().lower() == "no"
+                            print(f"Your generated password is '{loginPassword}'.\n {loginName} for {accType} credentials have been created and saved")
+                            print("\n")
+                            
+                        elif input().lower() == "no":
                             print("Create a Password. \n HINT! Use a combination of alpha numerics and symbols for a stronger password.")
                             loginPassword = input("Your Password: ")
                             save_credential(
@@ -221,8 +222,23 @@ def main():
                         )  # Create and save new credential
                             print(f"Your {accType} credentials with username {loginName} has been saved.")
                         
-                        # else:
-                        #     print("Something went wrong")
+                        else:
+                            print("Something isn't Right, Try Again")
+                    elif short_code == "fc":
+                        print("Lets Find your Credential")
+                        print("\n")
+                        
+                        print("Enter the username of the account you would like to find credentials for.")
+                        search_username = input()
+                        while check_existing_credential(search_username):
+                            found_credential = find_credential(search_username)
+                            print(f"We found credentials for {found_credential.type} with the username {found_credential.username}")
+                            print("-" *20)
+                            
+                            print(f"Your password is {found_credential.password}")
+                        
+                        else:
+                            print("No credentials with that username was found..")
 
                                    
 
@@ -231,7 +247,6 @@ def main():
 
 
 # accType, loginName, LoginPassword
-
 
 if __name__ == "__main__":
     main()
