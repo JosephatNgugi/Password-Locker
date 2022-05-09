@@ -111,7 +111,7 @@ def main():
 
     while True:
         print(
-            "Use these short codes for navigation: \n -> su to sign up for an account \n -> lg to Login to you account \n -> lo to log out of your account"
+            "Use these short codes for navigation: \n -> su to sign up for an account \n -> lg to Login to you account \n -> ex to exit"
         )
         short_code = input().lower()
         print("\n")
@@ -175,7 +175,7 @@ def main():
                         "You can now securely save your credentials with Password Locker. \n"
                     )
                     print(
-                        "Use these Short Codes:\n -> sc to save your existing credential \n -> cc to create new credential \n -> fc to search for a credential \n -> dc to display all your saved credentials \n -> cp to copy password \n -> del to delete a credential"
+                        "Use these Short Codes:\n -> sc to save your existing credential \n -> cc to create new credential \n -> fc to search for a credential \n -> dc to display all your saved credentials \n -> cp to copy password \n -> del to delete a credential \n -> lo to logout of your account"
                     )
                     print("\n")
 
@@ -197,6 +197,7 @@ def main():
                         save_credential(
                             create_credential(accType, loginName, loginPassword)
                         )  # Create and save new credential
+                        print(f"Your {accType} Credential for {loginName} successfully saved")
                     elif short_code == "cc":
                         print("Creating a new user credential")
                         print("\n")
@@ -230,7 +231,7 @@ def main():
                         
                         print("Enter the username of the account you would like to find credentials for.")
                         search_username = input()
-                        while check_existing_credential(search_username):
+                        if check_existing_credential(search_username):
                             found_credential = find_credential(search_username)
                             print(f"We found credentials for {found_credential.type} with the username {found_credential.username}")
                             print("-" *20)
@@ -239,14 +240,36 @@ def main():
                         
                         else:
                             print("No credentials with that username was found..")
-
+                    
+                    elif short_code == "dc":
+                        if display_credentials():
+                            print("Here are you saved credentials")
+                            print("\n")
+                            
+                            for credential in display_credentials():
+                                print(f"For {credential.type}\n Login Username is {credential.username} and password is {credential.password}.")
+                        
+                        else:
+                            print("You have no saved credentials yet.")
                                    
-
+                    elif short_code == "cp" or "del":
+                        print("Sorry! You are not able to perform that action at this moment, please try later.")
+                    
+                    elif short_code == "lo":
+                        print(f"Goodbye {userName}")
+                        print("\n")
+                        print("-" *20)
+                        print("You've been logged out")
+                        
+                    else:
+                        print("Something did not go as intended, You can use the short codes")
             else:
                 print("Sorry! No account with that username was found.")
-
-
-# accType, loginName, LoginPassword
+        elif short_code == "ex":
+            print("Goodbye for Now")
+            print("x+" *10)
+            
+            break
 
 if __name__ == "__main__":
     main()

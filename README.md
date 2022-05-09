@@ -38,6 +38,7 @@ Click on this link to view the live website: https://josephatngugi.github.io/Pas
 
 -----
 ## Known Bugs
+- After every action performed a user is returned to the login process. 
 If you encounter any bugs, please feel free to document it and reach out.
 ### Contacts
 You can reach me on
